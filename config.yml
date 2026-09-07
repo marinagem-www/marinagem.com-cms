@@ -1,0 +1,80 @@
+backend:
+  name: github
+  repo: marinagem-www/2023.marinagem.com
+  branch: main
+
+media_folder: imgs
+public_folder: /imgs
+
+collections:
+  - name: projects_en
+    label: "Projects - EN"
+    folder: projects/en
+    create: true
+    extension: md
+    format: frontmatter
+    slug: "{{project_id}}"
+    media_folder: "/imgs/{{project_id}}"
+    public_folder: "/imgs/{{project_id}}"
+
+    fields: &project_fields
+      - label: Project Title
+        name: project_title
+        widget: string
+        hint: Name of the project (e.g. My Project)
+
+      - label: Project ID / File name
+        name: project_id
+        widget: string
+        hint: |
+          The unique project ID.
+          This is the same for pt/en and should match the exact name of the image directory.
+          Use only lowercase letters, numbers and hyphens (e.g. new-project).
+
+      - label: Project Medium
+        name: medium
+        widget: string
+        hint: Project media (e.g. Oil on canvas)
+
+      - label: Project Dimensions
+        name: dimensions
+        widget: string
+        hint: Project dimensions (e.g. Variable Dimensions, or 20 x 20 cm)
+
+      - label: Project Year
+        name: year
+        widget: string
+        hint: Project year in YYYY format (e.g. 2020)
+
+      - label: Project Cover Image
+        name: cover
+        widget: image
+        required: false
+
+      - label: Project Category
+        name: category
+        widget: select
+        hint: Select project category from dropdown
+        options:
+          - sun
+          - water
+          - forest
+          - minerals
+          - machines
+          - archive
+
+      - label: Body
+        name: body
+        widget: markdown
+        required: false
+
+  - name: projects_pt
+    label: "Projects - PT"
+    folder: projects/pt
+    create: true
+    extension: md
+    format: frontmatter
+    slug: "{{project_id}}"
+    media_folder: "/imgs/{{project_id}}"
+    public_folder: "/imgs/{{project_id}}"
+    fields: *project_fields
